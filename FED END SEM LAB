@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+    .student-card {
+      max-width: 300px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      background: white;
+    }
+    .student-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      object-fit: cover;
+      border: 3px solid #4a90e2;
+    }
+    h2 {
+      margin: 10px 0;
+      color: #333;
+    }
+    p {
+      margin: 8px 0;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div id="studentContainer"></div>
+
+  <script>
+    // 1. JSON object with student data and internet image
+    const student = {
+      name: 'Rahul Sharma',
+      rollNumber: '12345',
+      department: 'Computer Science',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face'  // Real profile photo from Unsplash
+    };
+
+    // Function to render student details
+    function displayStudent() {
+      const container = document.getElementById('studentContainer');
+      container.innerHTML = `
+        <div class="student-card">
+          <!-- 3. Profile Image from Internet -->
+          <img src="${student.image}" alt="${student.name}" class="student-image" onerror="this.src='https://via.placeholder.com/120/ddd/666?text=Photo'">
+          
+          <!-- 2. Student Details -->
+          <h2>${student.name}</h2>
+          <p><strong>Roll Number:</strong> ${student.rollNumber}</p>
+          <p><strong>Department:</strong> ${student.department}</p>
+        </div>
+      `;
+    }
+
+    // Display student when page loads
+    displayStudent();
+  </script>
+</body>
+</html>
